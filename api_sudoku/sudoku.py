@@ -179,12 +179,10 @@ class Sudoku():
                             i, k)
 
                         number = {
-
                             "number": self.quadrantes[j].matriz[i][k],
                             "row":  i,
                             "column": column,
                             "quadrant": self.quadrantes[j].numero
-
                         }
 
                         json['data'].append(number)
