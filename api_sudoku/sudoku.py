@@ -2,7 +2,7 @@ from quadrante import Quadrante, BlockedException
 from random import randint
 
 
-class Tabuleiro():
+class Sudoku():
     def __init__(self) -> None:
         # Inicializa os quadrantes do tabuleiro
         quadrante_1 = Quadrante(0)
@@ -168,21 +168,25 @@ class Tabuleiro():
 
         json = {"data": []}
 
-        for i in range(3):
-            for j in range(0, 3):
-                for k in range(0, 3):
+        intervalo = 0
+        while intervalo < 9:
+            intervalo += 3
+            for i in range(3):
+                for j in range(intervalo-3, intervalo):
+                    for k in range(0, 3):
 
-                    row, column = self.quadrantes[j].coordenada_absoluta(i, k)
+                        row, column = self.quadrantes[j].coordenada_absoluta(
+                            i, k)
 
-                    number = {
+                        number = {
 
-                        "number": self.quadrantes[j].matriz[i][k],
-                        "row":  i,
-                        "column": column,
-                        "quadrante": self.quadrantes[j].numero
+                            "number": self.quadrantes[j].matriz[i][k],
+                            "row":  i,
+                            "column": column,
+                            "quadrante": self.quadrantes[j].numero
 
-                    }
+                        }
 
-                    json['data'].append(number)
+                        json['data'].append(number)
 
         return json
