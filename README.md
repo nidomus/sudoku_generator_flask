@@ -1,2 +1,2 @@
-# django_rest_sudoku
+# sudoku_generator_flask
  Rest API for generating sudokus games
