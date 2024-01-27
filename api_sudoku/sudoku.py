@@ -183,7 +183,7 @@ class Sudoku():
                             "number": self.quadrantes[j].matriz[i][k],
                             "row":  i,
                             "column": column,
-                            "quadrante": self.quadrantes[j].numero
+                            "quadrant": self.quadrantes[j].numero
 
                         }
 
