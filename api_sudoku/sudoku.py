@@ -1,188 +1,108 @@
-from quadrante import Quadrante, BlockedException
+from block import Block, BlockedException
 from random import randint
 
 
 class Sudoku():
     def __init__(self) -> None:
-        # Inicializa os quadrantes do tabuleiro
-        quadrante_1 = Quadrante(0)
-        quadrante_2 = Quadrante(1)
-        quadrante_3 = Quadrante(2)
-        quadrante_4 = Quadrante(3)
-        quadrante_5 = Quadrante(4)
-        quadrante_6 = Quadrante(5)
-        quadrante_7 = Quadrante(6)
-        quadrante_8 = Quadrante(7)
-        quadrante_9 = Quadrante(8)
 
-        quadrante_1.set_vizinhos_h([quadrante_2, quadrante_3])
-        quadrante_1.set_vizinhos_v([quadrante_4, quadrante_7])
+        # Create the instance of the 9 blocks of sudoku board
 
-        quadrante_2.set_vizinhos_h([quadrante_1, quadrante_3])
-        quadrante_2.set_vizinhos_v([quadrante_5, quadrante_8])
+        block_1 = Block(0)
+        block_2 = Block(1)
+        block_3 = Block(2)
+        block_4 = Block(3)
+        block_5 = Block(4)
+        block_6 = Block(5)
+        block_7 = Block(6)
+        block_8 = Block(7)
+        block_9 = Block(8)
 
-        quadrante_3.set_vizinhos_h([quadrante_1, quadrante_2])
-        quadrante_3.set_vizinhos_v([quadrante_6, quadrante_9])
+        block_1.set_horizontal_neighbors([block_2, block_3])
+        block_1.set_vertical_neighbors([block_4, block_7])
 
-        quadrante_4.set_vizinhos_h([quadrante_5, quadrante_6])
-        quadrante_4.set_vizinhos_v([quadrante_1, quadrante_7])
+        block_2.set_horizontal_neighbors([block_1, block_3])
+        block_2.set_vertical_neighbors([block_5, block_8])
 
-        quadrante_5.set_vizinhos_h([quadrante_4, quadrante_6])
-        quadrante_5.set_vizinhos_v([quadrante_2, quadrante_8])
+        block_3.set_horizontal_neighbors([block_1, block_2])
+        block_3.set_vertical_neighbors([block_6, block_9])
 
-        quadrante_6.set_vizinhos_h([quadrante_4, quadrante_5])
-        quadrante_6.set_vizinhos_v([quadrante_3, quadrante_9])
+        block_4.set_horizontal_neighbors([block_5, block_6])
+        block_4.set_vertical_neighbors([block_1, block_7])
 
-        quadrante_7.set_vizinhos_h([quadrante_8, quadrante_9])
-        quadrante_7.set_vizinhos_v([quadrante_1, quadrante_4])
+        block_5.set_horizontal_neighbors([block_4, block_6])
+        block_5.set_vertical_neighbors([block_2, block_8])
 
-        quadrante_8.set_vizinhos_h([quadrante_7, quadrante_9])
-        quadrante_8.set_vizinhos_v([quadrante_2, quadrante_5])
+        block_6.set_horizontal_neighbors([block_4, block_5])
+        block_6.set_vertical_neighbors([block_3, block_9])
 
-        quadrante_9.set_vizinhos_h([quadrante_7, quadrante_8])
-        quadrante_9.set_vizinhos_v([quadrante_3, quadrante_6])
+        block_7.set_horizontal_neighbors([block_8, block_9])
+        block_7.set_vertical_neighbors([block_1, block_4])
 
-        self.quadrantes: list[Quadrante] = [quadrante_1, quadrante_2, quadrante_3,
-                                            quadrante_4, quadrante_5, quadrante_6, quadrante_7, quadrante_8, quadrante_9]
+        block_8.set_horizontal_neighbors([block_7, block_9])
+        block_8.set_vertical_neighbors([block_2, block_5])
 
-        self.quadrantes_copia = []
+        block_9.set_horizontal_neighbors([block_7, block_8])
+        block_9.set_vertical_neighbors([block_3, block_6])
+
+        self.blocks: list[Block] = [block_1, block_2, block_3,
+                                    block_4, block_5, block_6, block_7, block_8, block_9]
+
+        self.blocks_copia = []
         self.resolvido = False
         self.solucao = None
         self.preencher_tabuleiro()
 
-    def preencher_tabuleiro(self):
+    def generate_sudoku(self):
 
         # Preenche todas as casas do tabuleiro
         flag = False
         while flag == False:
             flag = True
-            for quadrante in self.quadrantes:
+            for block in self.blocks:
                 try:
-                    quadrante.preencher_matriz()
+                    block.fill_block()
                 except BlockedException:
-                    self.zerar_quadrantes()
+                    self.clear_blocks()
                     flag = False
-
-    def verificar_tabuleiro(self, lista=None):
-        if not lista:
-            lista = self.quadrantes
-
-        for quadrante in self.quadrantes:
-            self.matriz = quadrante.matriz
-
-            for i in range(3):
-                for j in range(3):
-                    if quadrante.verificar_vizinhos(self.matriz[i][j], i, j):
-                        return False
-        return True
 
     def gerar_jogo(self):
 
-        espacos_vazios = 0
-        while espacos_vazios <= 46:
+        empty_spaces = 0
+        while empty_spaces <= 46:
 
-            quad = randint(0, 8)
+            block_id = randint(0, 8)
             i = randint(0, 2)
             j = randint(0, 2)
-            # and (self.quadrantes[quad].quantidade_valor(0) < 9)
-            if self.quadrantes[quad].matriz[i][j] != 0 and (self.quadrantes[quad].quantidade_valor(0) < 8):
-                self.quadrantes[quad].matriz[i][j] = 0
-                espacos_vazios += 1
 
-    def encontrar_valores_invalidos(self, quad, valor, linha, coluna):
+            if self.blocks[block_id].matrix[i][j] != 0 and (self.blocks[block_id].count_value(0) < 8):
+                self.blocks[block_id].matrix[i][j] = 0
+                empty_spaces += 1
 
-        coordenadas = []
+    def clear_blocks(self):
+        for block in self.blocks:
+            block.matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
-        for i in range(3):
-            for j in range(3):
-                if self.quadrantes[quad].matriz[i][j] == valor and not (i == linha and j == coluna):
-                    coordenadas.append((quad, i, j))
-
-        for vizinho in self.quadrantes[quad].vizinhos_h:
-            aux = vizinho.verificar_linha(valor, linha)
-            if aux is not None:
-                coordenadas.append(aux)
-
-        for vizinho in self.quadrantes[quad].vizinhos_v:
-            aux = vizinho.verificar_coluna(valor, coluna)
-            if aux is not None:
-                coordenadas.append(aux)
-        return coordenadas
-
-    def converte_coordenada_local(self, quad, valor):
-
-        for linha in range(9):
-            if valor in self.mapa[linha]:
-                coluna = self.mapa[linha].index(valor)
-                break
-
-        if linha < 3:
-            i = linha
-        else:
-            i = linha % 3
-
-        if coluna < 3:
-            j = coluna
-        else:
-            j = coluna % 3
-
-        return i, j
-
-    def zerar_quadrantes(self):
-        for quadrante in self.quadrantes:
-            quadrante.matriz = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-
-    def gerar_mapa(self):
-        x = [[], [], [], [], [], [], [], [], []]
-        for i in range(9):
-            for j in range(9):
-                x[i].append(j+(i*9))
-        return x
-
-    def print_tabuleiro(self):
-        print('-'*31)
-        for i in range(3):
-            print(self.quadrantes[0].matriz[i], end='  ')
-            print(self.quadrantes[1].matriz[i], end='  ')
-            print(self.quadrantes[2].matriz[i], end='  ')
-            print()
-
-        print()
-
-        for i in range(3):
-            print(self.quadrantes[3].matriz[i], end='  ')
-            print(self.quadrantes[4].matriz[i], end='  ')
-            print(self.quadrantes[5].matriz[i], end='  ')
-            print()
-
-        print()
-
-        for i in range(3):
-            print(self.quadrantes[6].matriz[i], end='  ')
-            print(self.quadrantes[7].matriz[i], end='  ')
-            print(self.quadrantes[8].matriz[i], end='  ')
-            print()
-        print()
-
-    def get_json_tabuleiro(self):
+    def get_json(self):
 
         json = {"data": []}
 
-        intervalo = 0
-        while intervalo < 9:
-            intervalo += 3
+        blocks_range = 0
+        while blocks_range < 9:
+
+            blocks_range += 3
+
             for i in range(3):
-                for j in range(intervalo-3, intervalo):
+                for j in range(blocks_range-3, blocks_range):
                     for k in range(0, 3):
 
-                        row, column = self.quadrantes[j].coordenada_absoluta(
+                        row, column = self.blocks[j].get_number_coordinate(
                             i, k)
 
                         number = {
-                            "number": self.quadrantes[j].matriz[i][k],
+                            "number": self.blocks[j].matrix[i][k],
                             "row":  i,
                             "column": column,
-                            "quadrant": self.quadrantes[j].numero
+                            "block": self.blocks[j].numero
                         }
 
                         json['data'].append(number)

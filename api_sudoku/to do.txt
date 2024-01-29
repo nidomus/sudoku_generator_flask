@@ -1,2 +1,0 @@
-
-- Verificar se alterar o formato do Json irá facilitar o trabalho no Front-end

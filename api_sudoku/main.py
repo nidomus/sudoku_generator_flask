@@ -5,12 +5,12 @@ from sudoku import Sudoku
 app = Flask(__name__)
 
 
-@app.route('/generateSudoku/')
-def generateSudoku():
+@app.route('/api/v1/generate-sudoku/')
+def generate_sudoku():
 
     sudoku = Sudoku()
-    sudoku.preencher_tabuleiro()
-    data = sudoku.get_json_tabuleiro()
+    sudoku.generate_sudoku()
+    data = sudoku.get_json()
 
     return jsonify(data)
 
