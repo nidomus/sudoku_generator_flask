@@ -28,7 +28,7 @@ class Block():
 
                 for column in range(3):
                     for num in numbers:
-                        if not self.check_neighbors(num, row, column):
+                        if not self.verify_neighbors(num, row, column):
                             self.matrix[row][column] = num
                             numbers.remove(num)
                             break
