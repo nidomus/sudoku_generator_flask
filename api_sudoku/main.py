@@ -9,7 +9,6 @@ app = Flask(__name__)
 def generate_sudoku():
 
     sudoku = Sudoku()
-    sudoku.generate_sudoku()
     data = sudoku.get_json()
 
     return jsonify(data)

@@ -47,14 +47,10 @@ class Sudoku():
         self.blocks: list[Block] = [block_1, block_2, block_3,
                                     block_4, block_5, block_6, block_7, block_8, block_9]
 
-        self.blocks_copia = []
-        self.resolvido = False
-        self.solucao = None
-        self.preencher_tabuleiro()
+        self.generate_board()
 
-    def generate_sudoku(self):
+    def generate_board(self):
 
-        # Preenche todas as casas do tabuleiro
         flag = False
         while flag == False:
             flag = True
@@ -65,7 +61,7 @@ class Sudoku():
                     self.clear_blocks()
                     flag = False
 
-    def gerar_jogo(self):
+    def generate_playable_board(self):
 
         empty_spaces = 0
         while empty_spaces <= 46:
