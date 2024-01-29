@@ -98,7 +98,7 @@ class Sudoku():
                             "number": self.blocks[j].matrix[i][k],
                             "row":  i,
                             "column": column,
-                            "block": self.blocks[j].numero
+                            "block": self.blocks[j].id
                         }
 
                         json['data'].append(number)
