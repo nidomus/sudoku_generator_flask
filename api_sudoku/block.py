@@ -11,7 +11,7 @@ class Block():
     def __init__(self, id) -> None:
 
         self.id = id
-        self.matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+        self.grid = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         self.vertical_neighbors: list[Block] = []
         self.horizontal_neighbors: list[Block] = []
 
@@ -20,7 +20,7 @@ class Block():
 
         while self.verify_block(0):
 
-            self.matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+            self.grid = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
             numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
             shuffle(numbers)
 
@@ -29,7 +29,7 @@ class Block():
                 for column in range(3):
                     for num in numbers:
                         if not self.verify_neighbors(num, row, column):
-                            self.matrix[row][column] = num
+                            self.grid[row][column] = num
                             numbers.remove(num)
                             break
 
@@ -39,7 +39,7 @@ class Block():
     def get_remaining_numbers(self,):
 
         numbers = []
-        for i in self.matrix:
+        for i in self.grid:
             for j in i:
                 numbers.append(j)
 
@@ -55,7 +55,7 @@ class Block():
     # Verify if the drawn number is already in this block
     def verify_block(self, value):
 
-        for row in self.matrix:
+        for row in self.grid:
             if value in row:
                 return True
 
@@ -93,21 +93,21 @@ class Block():
         qtd = 0
         for row in range(3):
             for column in range(3):
-                if self.matrix[row][column] == value:
+                if self.grid[row][column] == value:
                     qtd += 1
         return qtd
 
     def verify_row(self, value, row):
-        if value in self.matrix[row]:
+        if value in self.grid[row]:
             i = row
-            j = self.matrix[row].index(value)
+            j = self.grid[row].index(value)
             return (self.id, i, j)
         return None
 
     def verify_column(self, value, column):
-        for row in self.matrix:
+        for row in self.grid:
             if value == row[column]:
-                i = self.matrix.index(row)
+                i = self.grid.index(row)
                 j = column
                 return (self.id, i, j)
         return None
@@ -137,7 +137,7 @@ class Block():
 
         string = ''
 
-        for list in self.matrix:
+        for list in self.grid:
 
             for number in list:
 

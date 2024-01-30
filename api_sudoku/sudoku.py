@@ -70,13 +70,13 @@ class Sudoku():
             i = randint(0, 2)
             j = randint(0, 2)
 
-            if self.blocks[block_id].matrix[i][j] != 0 and (self.blocks[block_id].count_value(0) < 8):
-                self.blocks[block_id].matrix[i][j] = 0
+            if self.blocks[block_id].grid[i][j] != 0 and (self.blocks[block_id].count_value(0) < 8):
+                self.blocks[block_id].grid[i][j] = 0
                 empty_spaces += 1
 
     def clear_blocks(self):
         for block in self.blocks:
-            block.matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+            block.grid = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
     def get_json(self):
 
@@ -95,7 +95,7 @@ class Sudoku():
                             i, k)
 
                         number = {
-                            "number": self.blocks[j].matrix[i][k],
+                            "number": self.blocks[j].grid[i][k],
                             "row":  i,
                             "column": column,
                             "block": self.blocks[j].id
