@@ -1,2 +1,2 @@
 # sudoku_generator_flask
- Rest API for generating sudokus games
+ Flask API for generating sudokus games
