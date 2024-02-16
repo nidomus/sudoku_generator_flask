@@ -61,16 +61,16 @@ class Sudoku():
                     self.clear_blocks()
                     flag = False
 
-    def generate_playable_board(self):
+    def generate_playable_board(self, max_empty_spaces):
 
         empty_spaces = 0
-        while empty_spaces <= 46:
+        while empty_spaces <= max_empty_spaces:
 
             block_id = randint(0, 8)
             i = randint(0, 2)
             j = randint(0, 2)
 
-            if self.blocks[block_id].grid[i][j] != 0 and (self.blocks[block_id].count_value(0) < 8):
+            if self.blocks[block_id].grid[i][j] != 0 and (self.blocks[block_id].count_value(0) <= 7):
                 self.blocks[block_id].grid[i][j] = 0
                 empty_spaces += 1
 
