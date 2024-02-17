@@ -5,8 +5,8 @@
 # Check out the endpoint in the link below
 
 <a>https://sudoku-generator.onrender.com/api/v1/generate/</a>
-
-
+<br>
+<br>
 # Structure of this API's JSON response
 
 The base structure of the response JSON that represents a cell of the Sudoku board is:
@@ -24,6 +24,9 @@ The base structure of the response JSON that represents a cell of the Sudoku boa
 ... ]}
 ```
 
-For a better comprehension see the image bellow wich ilustrate all the atributes on a sudoku board.
+<br>
 
-!["Ilustration of this API JSON response structure in a sudoku board"]("https://github.com/nidomus/sudoku_generator_flask/blob/main/image.png?raw=true")
+For a better comprehension see the image bellow wich ilustrate all the atributes on a sudoku board.
+<br>
+<br>
+<div align="center"><img src="image.png" style="height:900px"></div>
