@@ -1,18 +1,18 @@
 # sudoku_generator_flask
- Flask API for generating sudokus games.
+ <h3>Flask API for generating sudokus games.</h3>
 
 
 # Check out the endpoint in the link below
 
-<a>https://sudoku-generator.onrender.com/api/v1/generate/</a>
+<a target='_blank'><h3>https://sudoku-generator.onrender.com/api/v1/generate/</h3></a>
 <br>
 <br>
 # Structure of this API's JSON response
 
-The base structure of the response JSON that represents a cell of the Sudoku board is:
+<h3>The base structure of the response JSON that represents a cell of the Sudoku board is:</h3>
 
-```
-{ "data": [...
+```json
+{ "data": [
 
  {
     "block": 4,
@@ -21,17 +21,19 @@ The base structure of the response JSON that represents a cell of the Sudoku boa
     "number": 5
 },
 
-... ]}
+]}
 ```
 
 <br>
 
-For a better comprehension see the image bellow wich ilustrate all the JSON atributes on a sudoku board.
+<h3>For a better comprehension, see the image bellow wich ilustrate all the JSON atributes on a sudoku board.</h3>
 <br>
 <br>
-<div align="center"><img src="example.png" style=""></div>
+<div align="center"><img src="image.png" style=""></div>
 
 <br>
 <br>
 
-<p>I elaborated this structure for assist in validating user inputs in the front-end development of the <a href='https://github.com/nidomus/YASG' target="_blank"><strong>YASG</strong></a> Project</p>
+<h3>I elaborated this structure for assist in validating user inputs in the development of the <a href='https://github.com/nidomus/YASG' target="_blank"><strong>YASG</strong></a> Project.</h3>
+
+<h3>With that information, I can easily validate whether the number inserted by the user in the position follows the rules of Sudoku by simply searching for duplicate numbers in the row, column, or block.</h3>
