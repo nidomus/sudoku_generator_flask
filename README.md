@@ -34,6 +34,4 @@
 <br>
 <br>
 
-<h3>I elaborated this structure for assist in validating user inputs in the development of the <a href='https://github.com/nidomus/YASG' target="_blank"><strong>YASG</strong></a> Project.</h3>
-
-<h3>With that information, I can easily validate whether the number inserted by the user in the position follows the rules of Sudoku by simply searching for duplicate numbers in the row, column, or block.</h3>
+<h3>I elaborated this structure for assist in validating user inputs in the development of the <a href='https://github.com/nidomus/YASG' target="_blank"><strong>YASG</strong></a> Project. With that information, I can easily validate whether the number inserted by the user in the position follows the rules of Sudoku by simply searching for duplicate numbers in the row, column, or block.</h3>
