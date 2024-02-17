@@ -26,7 +26,7 @@ The base structure of the response JSON that represents a cell of the Sudoku boa
 
 <br>
 
-For a better comprehension see the image bellow wich ilustrate all the atributes on a sudoku board.
+For a better comprehension see the image bellow wich ilustrate all the JSON atributes on a sudoku board.
 <br>
 <br>
-<div align="center"><img src="image.png" style="height:900px"></div>
+<div align="center"><img src="image.png" style=""></div>
