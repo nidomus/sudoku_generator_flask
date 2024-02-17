@@ -29,4 +29,4 @@ The base structure of the response JSON that represents a cell of the Sudoku boa
 For a better comprehension see the image bellow wich ilustrate all the JSON atributes on a sudoku board.
 <br>
 <br>
-<div align="center"><img src="image.png" style=""></div>
+<div align="center"><img src="example.png" style=""></div>
