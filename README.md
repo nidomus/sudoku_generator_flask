@@ -26,4 +26,4 @@ The base structure of the response JSON that represents a cell of the Sudoku boa
 
 For a better comprehension see the image bellow wich ilustrate all the atributes on a sudoku board.
 
-!["Ilustration of this API JSON response structure in a sudoku board"]("./image.png")
+!["Ilustration of this API JSON response structure in a sudoku board"]("https://github.com/nidomus/sudoku_generator_flask/blob/main/image.png?raw=true")
