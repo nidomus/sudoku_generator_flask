@@ -30,3 +30,8 @@ For a better comprehension see the image bellow wich ilustrate all the JSON atri
 <br>
 <br>
 <div align="center"><img src="example.png" style=""></div>
+
+<br>
+<br>
+
+<p>I elaborated this structure for assist in validating user inputs in the front-end development of the <a href='https://github.com/nidomus/YASG' target="blank"><strong>YASG</strong></a> Project</p>
