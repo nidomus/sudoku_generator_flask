@@ -5,13 +5,16 @@ from sudoku import Sudoku
 app = Flask(__name__)
 
 
-@app.route('/api/v1/generate/')
+@app.route('/api/v1/generate/', methods=['GET'])
 def generate_sudoku():
 
     sudoku = Sudoku()
     data = sudoku.get_json()
+    response = jsonify(data)
 
-    return jsonify(data)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+
+    return response
 
 
 @app.route('/api/v1/generate-easy/')
