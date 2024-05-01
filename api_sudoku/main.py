@@ -24,7 +24,11 @@ def generate_easy_game():
     sudoku.generate_playable_board(max_empty_spaces=43)
     data = sudoku.get_json()
 
-    return jsonify(data)
+    response = jsonify(data)
+
+    response.headers.add('Access-Control-Allow-Origin', '*')
+
+    return response
 
 
 @app.route('/api/v1/generate-medium/')
