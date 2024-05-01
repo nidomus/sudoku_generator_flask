@@ -38,7 +38,11 @@ def generate_medium_game():
     sudoku.generate_playable_board(max_empty_spaces=51)
     data = sudoku.get_json()
 
-    return jsonify(data)
+    response = jsonify(data)
+
+    response.headers.add('Access-Control-Allow-Origin', '*')
+
+    return response
 
 
 @app.route('/api/v1/generate-hard/')
@@ -48,7 +52,11 @@ def generate_hard_game():
     sudoku.generate_playable_board(max_empty_spaces=58)
     data = sudoku.get_json()
 
-    return jsonify(data)
+    response = jsonify(data)
+
+    response.headers.add('Access-Control-Allow-Origin', '*')
+
+    return response
 
 
 if __name__ == "__main__":
