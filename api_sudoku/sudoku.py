@@ -71,7 +71,7 @@ class Sudoku():
             j = randint(0, 2)
 
             if self.blocks[block_id].grid[i][j] != 0 and (self.blocks[block_id].count_value(0) <= 7):
-                self.blocks[block_id].grid[i][j] = 0
+                self.blocks[block_id].grid[i][j] = ''
                 empty_spaces += 1
 
     def clear_blocks(self):
