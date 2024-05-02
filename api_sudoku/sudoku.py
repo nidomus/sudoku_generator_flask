@@ -96,7 +96,7 @@ class Sudoku():
 
                         number = {
                             "number": self.blocks[j].grid[i][k],
-                            "row":  i,
+                            "row":  row,
                             "column": column,
                             "block": self.blocks[j].id
                         }
