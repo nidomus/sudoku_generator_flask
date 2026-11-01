@@ -4,7 +4,7 @@
 
 # Check out the endpoint in the link below
 
-<a target='_blank' href="api.sudoku.herbertdev.com.br/v1/generate"><h3>GENERATE BOARD</h3></a>
+<a target='_blank'><h3>http://api.sudoku.herbertdev.com.br/v1/generate</h3></a>
 <br>
 <br>
 # Structure of this API's JSON response
